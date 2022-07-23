@@ -1,20 +1,17 @@
 import React from "react";
-import {  } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "../styles/navbar.css";
 
 export function Navbar() {
     return(
         <>
-            <div className="navbar-content ">
-            <div className="row justify-content-around">
-                <div className="col-4">
-                One of two columns
+            <div className="navbar-content d-flex">
+                <div className="col-6 col-md-6 align-self-center text-center">
+                    <p>Where in the world?</p> 
                 </div>
-                <div className="col-4">
-                One of two columns
+                <div className="col-6 col-md-6 align-self-center text-center">
+                    <input className="btn-dark-mode" type="button" value="Dark Mode" />
                 </div>
-            </div>
-                
             </div>
             
         </>
