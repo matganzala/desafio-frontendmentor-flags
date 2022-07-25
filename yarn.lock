@@ -1483,7 +1483,7 @@ esbuild-windows-32@0.14.49:
 
 esbuild-windows-64@0.14.49:
   version "0.14.49"
-  resolved "https://registry.yarnpkg.com/esbuild-windows-64/-/esbuild-windows-64-0.14.49.tgz#b36b230d18d1ee54008e08814c4799c7806e8c79"
+  resolved "https://registry.npmjs.org/esbuild-windows-64/-/esbuild-windows-64-0.14.49.tgz"
   integrity sha512-+Cme7Ongv0UIUTniPqfTX6mJ8Deo7VXw9xN0yJEN1lQMHDppTNmKwAM3oGbD/Vqff+07K2gN0WfNkMohmG+dVw==
 
 esbuild-windows-arm64@0.14.49:
@@ -1747,6 +1747,11 @@ memoize-one@^5.0.0:
   resolved "https://registry.npmjs.org/memoize-one/-/memoize-one-5.2.1.tgz"
   integrity sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==
 
+minify-css-string@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/minify-css-string/-/minify-css-string-1.0.0.tgz"
+  integrity sha512-DJaNU2LAYR/bcDxRkmntPHnWNUZnmvkIkaD8qfuE5aLcM1bQODNAGSRxncv+tPglnYEG9xQVSpGFbcObix7j7Q==
+
 ms@2.1.2:
   version "2.1.2"
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
@@ -1877,6 +1882,18 @@ react-dom@^18.2.0:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
+
+react-fade-in@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-fade-in/-/react-fade-in-2.0.1.tgz#b4bcd7dac63d6857ebcd68facbff2f5f9616278f"
+  integrity sha512-oqS/WT4znaXEHmL+yo0IDUDY7uC9K4RP35j1SdRUEBspR09B2iIC0i8oJ28tPOr6Ez/L2aktF9p89j+DbsTVNw==
+
+react-fade@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/react-fade/-/react-fade-1.1.1.tgz"
+  integrity sha512-qpRQOUHp7X0P5RUyMKIKMxopZv2I0h+y8G18dffnj2hZse0XULtdaSFhDOuwl6LkdP9Rr0LhPhwdB9FyIbFeDw==
+  dependencies:
+    minify-css-string "^1.0.0"
 
 react-fast-compare@3.2.0:
   version "3.2.0"
