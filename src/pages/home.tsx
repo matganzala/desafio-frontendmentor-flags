@@ -1,11 +1,32 @@
 import { Input } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { Button  } from "react-bootstrap";
+//import { Button  } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import { Navbar } from "../components/navbar";
-import Select from 'react-select'
+import Select from 'react-select';
+import { Link } from 'react-router-dom';
+import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+
+const style = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
 
 export function Home() {
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     const options = [
         { value: 'Africa', label: 'Africa'},
         { value: 'Americas', label: 'Americas' },
@@ -17,8 +38,6 @@ export function Home() {
     const [filterRegion, setFilterRegion] = useState("");
     const [countries, setCountries] = useState([]);
     const [search, setSearch] = useState("");
-
-    
 
     useEffect(() => {
         var requestOptions: any = {
@@ -33,21 +52,23 @@ export function Home() {
           })
             .catch(error => console.log("Erro", error));
     }, [])
+
     
     return(     
         <>
-            {/* <Navbar/> */}
+            
+            <Navbar/>
             <div className="container">
                 <div className="content-homepage">
-                    <div className="row ">
-                        <div className="col-12 col-md-8 mt-3">
+                    <div className="row justify-content-around">
+                        <div className="col-6 col-md-5 mt-3">
                             <Input type="text" 
                                 className="input-search" 
                                 placeholder='Search for a country' 
                                 onChange = {(e: any) => setSearch(e.target.value)}
                                 />
                         </div>
-                        <div className="col-12 col-md-4 mt-3">
+                        <div className="col-6  col-md-3 mt-3">
                             <Select options={options} onChange={(e : any) => setFilterRegion(e.value)}/>
                         </div>
                     </div>
@@ -58,7 +79,7 @@ export function Home() {
                            )
                            .filter((item: any) => {
                                 if(filterRegion == ""){
-                                    
+
                                     return item;
 
                                 }else if (item?.region == filterRegion){
@@ -67,8 +88,8 @@ export function Home() {
                            }
                            ).map((item: any, index: any) => {
                                 return(
-                                    <a key={index}>
-                                        <Card  className="mt-3 mx-3" style={{ width: '15rem' }}>
+                                    <button onClick={handleOpen} key={index}>
+                                        <Card className="mt-3 mx-3" style={{ minHeight: '20rem', maxHeight: '20rem', width: '18rem' }}>
                                             <Card.Img variant="top" src={item?.flags.svg} />
                                             <Card.Body>
                                                 <Card.Title><strong>{item?.name.official}</strong></Card.Title>
@@ -77,7 +98,7 @@ export function Home() {
                                                     <p><strong>Capital: </strong>{item?.capital}</p>
                                             </Card.Body>
                                         </Card>
-                                    </a>
+                                    </button>
                                 )
                             })}
                         </div>
