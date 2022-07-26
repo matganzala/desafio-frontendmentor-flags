@@ -13,6 +13,7 @@ import React, { useEffect, useState } from "react";
 import { Card, NavItem } from "react-bootstrap";
 import { Navbar } from "../components/navbar";
 import Select from 'react-select';
+import { ModeFanOff } from "@mui/icons-material";
 
 export function Home() {
 
@@ -111,7 +112,7 @@ export function Home() {
                                 )
                             })}
                                 <Modal isCentered isOpen={isOpen} onClose={onClose} size={size}> 
-                                {overlay}   
+                                 
                                 <Navbar/>                           
                                     <ModalContent className="justify-content-center">
                                         <div className="container">
@@ -140,14 +141,15 @@ export function Home() {
                                                             <p><strong>Top Level Domain: </strong>{gethomedata?.tld}.</p>
                                                             
                                                             <p><strong>Currencies: </strong>
-                                                                {Object.values(gethomedata.currencies).map((moeda: any) => {
-                                                                    return moeda.name + ' - ' + moeda.symbol;
-                                                                })}
+                                                                {Object.values(gethomedata.currencies).map((coin: any) => {
+                                                                    return coin.name + ' - ' + coin.symbol;
+                                                                })}  
                                                             </p>
                                                             <p><strong>Languages: </strong>
                                                                 {Object.values(gethomedata.languages).map((language: any) => {
                                                                     return language;
                                                                 })}
+                                                                
                                                             </p>
                                                         </div>
                                                     </div>
