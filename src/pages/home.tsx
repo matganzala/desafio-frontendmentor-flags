@@ -10,16 +10,11 @@ import {
     Button,
   } from '@chakra-ui/react';
 import React, { useEffect, useState } from "react";
-//import { Button  } from "react-bootstrap";
-import { Card } from "react-bootstrap";
+import { Card, NavItem } from "react-bootstrap";
 import { Navbar } from "../components/navbar";
 import Select from 'react-select';
-import { Link } from 'react-router-dom';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 
 export function Home() {
-    
 
     const options = [
         { value: 'Africa', label: 'Africa'},
@@ -34,11 +29,22 @@ export function Home() {
     const [search, setSearch] = useState("");
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [size, setSize] = useState('full');
+    
 
     const handleSizeClick = (newSize: any) => {
         setSize(newSize)
         onOpen()
     }
+
+    const Overlay = () => (
+        <ModalOverlay
+        bg='blackAlpha.300'
+        backdropFilter='blur(10px) hue-rotate(90deg)'
+        />
+    )
+    
+    const [overlay, setOverlay] = useState(<Overlay/>)
+    var gethomedata = JSON.parse(localStorage.getItem('homedata')!);
 
     useEffect(() => {
         var requestOptions: any = {
@@ -57,72 +63,106 @@ export function Home() {
     return(     
         <>
             <Navbar/>
-                <div className="container">
-                    <div className="content-homepage">
-                        <div className="row justify-content-around">
-                            <div className="col-6 col-md-5 mt-3">
-                                <Input type="text" 
-                                    className="input-search" 
-                                    placeholder='Search for a country' 
-                                    onChange = {(e: any) => setSearch(e.target.value)}
-                                    />
-                            </div>
-                            <div className="col-6  col-md-3 mt-3">
-                                <Select options={options} onChange={(e : any) => setFilterRegion(e.value)}/>
-                            </div>
+            <div className="container">
+                <div className="content-homepage">
+                    <div className="row justify-content-around">
+                        <div className="col-6 col-md-5 mt-3">
+                            <Input type="text" 
+                                className="input-search" 
+                                placeholder='Search for a country' 
+                                onChange = {(e: any) => setSearch(e.target.value)}
+                                />
                         </div>
-                        <div className="row mt-3">
-                            <div className="col d-flex flex-wrap justify-content-center">
-                            {countries.filter((item: any) => 
-                            item?.name.official.toLowerCase().includes(search.toLowerCase())
-                            )
-                            .filter((item: any) => {
-                                    if(filterRegion == ""){
+                        <div className="col-6 col-md-5 mt-3">
+                            <Select options={options} onChange={(e : any) => setFilterRegion(e.value)}/>
+                        </div>
+                    </div>
+                    <div className="row mt-3">
+                        <div className="col d-flex flex-wrap justify-content-center">
+                        {countries.filter((item: any) => 
+                        item?.name.official.toLowerCase().includes(search.toLowerCase())
+                        )
+                        .filter((item: any) => {
+                                if(filterRegion == ""){
+                                    return item;
 
-                                        return item;
-
-                                    }else if (item?.region == filterRegion){
-                                        return item;
-                                    }
-                            }
-                            ).map((item: any, index: any) => {
-                                    return(
-                                            <>
-                                                {/* <Modal isOpen={isOpen} size={size} onClose={onClose}>
-                                                    <ModalOverlay />
-                                                    <ModalContent>
-                                                        <ModalHeader>{item?.name.common}</ModalHeader>
-                                                        <ModalCloseButton />
-                                                        <ModalBody>
-                                                            2
-                                                        </ModalBody>
-
-                                                        <ModalFooter>
-                                                            <Button colorScheme='blue' mr={3} onClick={onClose}>
-                                                                Close
-                                                            </Button>
-                                                            <Button variant='ghost'>Secondary Action</Button>
-                                                        </ModalFooter>
-                                                    </ModalContent>
-                                                </Modal> */}
-                                                <button onClick={onOpen} key={index}>
-                                                    <Card className="mt-3 mx-3" style={{ minHeight: '20rem', maxHeight: '20rem', width: '18rem' }}>
-                                                        <Card.Img variant="top" src={item?.flags.svg} />
-                                                        <Card.Body>
-                                                            <Card.Title><strong>{item?.name.official}</strong></Card.Title>
-                                                            <p><strong>Population: </strong>{item?.population}</p>
-                                                            <p><strong>Region: </strong>{item?.region}</p>
-                                                            <p><strong>Capital: </strong>{item?.capital}</p>
-                                                        </Card.Body>
-                                                    </Card>
-                                                </button>
-                                            </>
-                                    )
-                                })}
-                            </div>
+                                }else if (item?.region == filterRegion){
+                                    return item;
+                                }
+                        }
+                        ).map((itemMap: any, index: any) => {
+                                return(
+                                    <button value={index} key={index} onClick={() => {
+                                        setOverlay(<Overlay/>); 
+                                        onOpen(); 
+                                        localStorage.setItem('homedata', JSON.stringify(itemMap)); 
+                                        // console.log(itemMap);
+                                        }}>
+                                        <Card className="mt-3 mx-3" style={{ width: '18rem' }}>
+                                            <Card.Img variant="top"src={itemMap?.flags.svg} />
+                                            <Card.Body>
+                                                <Card.Title><strong>{itemMap?.name.official}</strong></Card.Title>
+                                                <p><strong>Population: </strong>{itemMap?.population}</p>
+                                                <p><strong>Region: </strong>{itemMap?.region}</p>
+                                                <p><strong>Capital: </strong>{itemMap?.capital}</p>
+                                            </Card.Body>
+                                        </Card>
+                                    </button>    
+                                )
+                            })}
+                                <Modal isCentered isOpen={isOpen} onClose={onClose} size={size}> 
+                                {overlay}   
+                                <Navbar/>                           
+                                    <ModalContent className="justify-content-center">
+                                        <div className="container">
+                                            <div className="row">
+                                                <div className="col">
+                                                    <button onClick={onClose}>Back</button>
+                                                </div>
+                                            </div>
+                                            <div className="row">
+                                                <div className="col">
+                                                    <img src={gethomedata?.flags.svg} style={{}} />
+                                                </div>
+                                                <div className="col">
+                                                    <div className="row">
+                                                        <h1>{gethomedata?.name.official}</h1>
+                                                    </div>
+                                                    <div className="row">
+                                                        <div className="col">
+                                                            <p><strong>Native Name: </strong>{gethomedata?.name.common}</p>
+                                                            <p><strong>Population: </strong>{gethomedata?.population}</p>
+                                                            <p><strong>Region: </strong>{gethomedata?.region}</p>
+                                                            <p><strong>Sub Region: </strong>{gethomedata?.subregion}</p>
+                                                            <p><strong>Capital: </strong>{gethomedata?.capital}</p>
+                                                        </div>
+                                                        <div className="col">
+                                                            <p><strong>Top Level Domain: </strong>{gethomedata?.tld}.</p>
+                                                            
+                                                            <p><strong>Currencies: </strong>
+                                                                {Object.values(gethomedata.currencies).map((moeda: any) => {
+                                                                    return moeda.name + ' - ' + moeda.symbol;
+                                                                })}
+                                                            </p>
+                                                            <p><strong>Languages: </strong>
+                                                                {Object.values(gethomedata.languages).map((language: any) => {
+                                                                    return language;
+                                                                })}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="row">
+                                                        <p><strong>Border Countries: </strong></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ModalContent>
+                                </Modal>
                         </div>
                     </div>
                 </div>
+            </div>
         </>
     )
 }
