@@ -3,7 +3,6 @@ import { Navbar } from "../components/navbar";
 import {} from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import "../styles/detailscountries.css";
-import { border, display } from "@mui/system";
 
 export function Details() {
     var gethomedata: any = JSON.parse(localStorage.getItem('homedata')!);
@@ -19,7 +18,7 @@ export function Details() {
                         </div>
                     </div>
                     <div className="row mt-3 align-items-center">
-                        <div className="col-6">
+                        <div className="col-12 col-md-6 mb-3">
                             <img src={gethomedata?.flags.svg} style={{}} />
                         </div>
                         <div className="col mx-5">

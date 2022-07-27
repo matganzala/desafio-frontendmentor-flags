@@ -1,8 +1,10 @@
 .details-btn {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background-color:transparent;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
+	border: 1px solid #d9d9d9;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-box-shadow: 1px 1px 8px 1px #D4D4D4; 
+    box-shadow: 1px 1px 8px 1px #D4D4D4;
 	display:inline-block;
 	cursor:pointer;
 	color:#666666;

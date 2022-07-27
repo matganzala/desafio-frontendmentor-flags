@@ -40,7 +40,7 @@ export function Home() {
     return(     
         <>
             <Navbar/>
-            <div className="container">
+            <div className="container mt-3">
                 <div className="content-homepage">
                     <div className="row justify-content-around">
                         <div className="col-6 col-md-5 mt-3">
