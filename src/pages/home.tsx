@@ -79,7 +79,7 @@ export function Home() {
                                                 <img src={itemMap?.flags.svg} className="mb-3 "/>
                                             </div>
                                             <div>
-                                                <strong className="h1-class-home mt-3">{itemMap?.name.official}</strong>
+                                                <strong className="h1-class-home mt-3">{itemMap?.name.common}</strong>
                                                 <p className="p-class-home"><strong>Population: </strong>{itemMap?.population}</p>
                                                 <p className="p-class-home"><strong>Region: </strong>{itemMap?.region}</p>
                                                 <p className="p-class-home"><strong>Capital: </strong>{itemMap?.capital}</p>
