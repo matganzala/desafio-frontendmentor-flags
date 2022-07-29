@@ -118,8 +118,19 @@ export function Home() {
                                                     <p className="p-class-home"><strong>Capital: </strong>{itemMap?.capital}</p>
                                                 </div>
                                             </div>
+<<<<<<< HEAD
                                         </button>
                                     </FadeIn>
+=======
+                                            <div>
+                                                <strong className="h1-class-home mt-3">{itemMap?.name.common}</strong>
+                                                <p className="p-class-home"><strong>Population: </strong>{itemMap?.population}</p>
+                                                <p className="p-class-home"><strong>Region: </strong>{itemMap?.region}</p>
+                                                <p className="p-class-home"><strong>Capital: </strong>{itemMap?.capital}</p>
+                                            </div>
+                                        </div>
+                                    </button>    
+>>>>>>> 067c12d9888bc70e01f16c232b8e443c3a8577b0
                                 )
                             })}
                             <li id="sentinela">
