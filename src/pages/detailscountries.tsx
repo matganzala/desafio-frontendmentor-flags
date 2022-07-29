@@ -3,6 +3,7 @@ import { Navbar } from "../components/navbar";
 import {} from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import "../styles/detailscountries.css";
+import FadeIn from "react-fade-in";
 
 export function Details() {
     var gethomedata: any = JSON.parse(localStorage.getItem('homedata')!);
@@ -11,6 +12,7 @@ export function Details() {
         <>
             <Navbar/>
             <div className="container">
+            <FadeIn>
                 <div className="content-page" style={{height: '100%'}}>
                     <div className="row mt-3">
                         <div className="col">
@@ -60,6 +62,7 @@ export function Details() {
                         </div>
                     </div>
                 </div>
+            </FadeIn>
             </div>
         </>
     )
