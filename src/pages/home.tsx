@@ -24,17 +24,22 @@ export function Home() {
     var navigate = useNavigate();
 
     useEffect(() => {
-        var requestOptions: any = {
-            method: 'GET',
-            redirect: 'follow'
-          };
 
-        fetch('https://restcountries.com/v3.1/all', requestOptions)
-          .then(response => response.json())
-          .then(result => {
-            setCountries(result);
-          })
-            .catch(error => console.log("Erro", error));
+        if(gethomedata == null){
+            localStorage.setItem('newhomedata', JSON.stringify(gethomedata));
+        }else{
+            var requestOptions: any = {
+                method: 'GET',
+                redirect: 'follow'
+              };
+
+            fetch('https://restcountries.com/v3.1/all', requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    setCountries(result);
+                })
+                    .catch(error => console.log("Erro", error));
+        }
     }, [])
 
     return(     
