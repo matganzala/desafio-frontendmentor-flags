@@ -6,6 +6,7 @@ import Select from 'react-select';
 import { useNavigate } from "react-router-dom";
 import '../styles/home.css';
 import FadeIn from 'react-fade-in';
+import { height } from "@mui/system";
 
 export function Home() {
 
@@ -20,8 +21,12 @@ export function Home() {
     const [filterRegion, setFilterRegion] = useState("");
     const [countries, setCountries] = useState([]);
     const [search, setSearch] = useState("");
-    const [scrolls, setScroll] = useState([1]);
-    const [infinite, setInfinite] = useState(true);
+    //const [infinite, setInfinite] = useState(true);
+    const [limite, setLimite] = useState(20);
+    const [scroll, setScroll] = useState(0);
+    const [heigth, setHeigth] = useState(0);
+    
+
     
     var navigate = useNavigate();
     var getnew: any = null;
@@ -57,17 +62,26 @@ export function Home() {
     },[countries])
 
     //scrollInfinito
-
-    {/*useEffect(() => {//efeito de scroll infinito
+    useEffect(() => {//efeito de scroll infinito
         const infiniteScroll = () => {
-            if(infinite) {
-                var wait = false;
-                const scroll: any = window.scrollY;
-                const heigth: any = document.body.offsetHeight - window.innerHeight;
-                //console.log(event);//consologo no evento de scroll
-                if(scroll > heigth * .10 && !wait){
-                    setScroll((scrolls) => [...scrolls, scrolls.length + 1])//desestruturando as páginas
+            var heigthAuxiliar: any = document.body.offsetHeight;
+            var wait = false;
+            setScroll(window.scrollY);
+            setHeigth(heigthAuxiliar - window.innerHeight);
+            //console.log(event);//consologo no evento de scroll
+            var infinite = true;
+            if(limite == countries.length){
+                infinite = false;
+            }
+            if(infinite){
+                if(scroll >= heigth * .80 && !wait){
+                    //setScroll((scrolls) => [...scrolls, scrolls.length + 1])//desestruturando as páginas
+                    var limiteAuxiliar: any = 20;
+                    limiteAuxiliar = limiteAuxiliar + 20;
+                    console.log(limiteAuxiliar);
+                    setLimite(limite + 20);
                     console.log(true);
+                    
                     wait = true;
                         setTimeout(() => {
                             wait = false;
@@ -75,15 +89,17 @@ export function Home() {
                 }
             }
         }
+        
             window.addEventListener('wheel', infiniteScroll)
             window.addEventListener('scroll', infiniteScroll)
         return () => {
             window.removeEventListener('wheel', infiniteScroll)
             window.removeEventListener('scroll', infiniteScroll)
-
+    
         };
         
-    },[])*/}
+        
+    }, [scroll, height])
     
       
 
@@ -106,7 +122,7 @@ export function Home() {
                     </div>
                     <div className="row mt-3">
                         <div className="col d-flex flex-wrap justify-content-center">  
-                            {scrolls.map((scroll: any) => countries.filter((item: any) => 
+                            {countries.filter((item: any) => 
                             item?.name.official.toLowerCase().includes(search.toLowerCase())
                             )
                             .filter((item: any) => {
@@ -150,7 +166,7 @@ export function Home() {
                                             </button>
                                         </FadeIn>
                                     )
-                                }))}                                             
+                                }).slice(0, limite)  }                                         
                         </div>
                     </div>
                 </div>
