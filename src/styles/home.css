@@ -1,5 +1,9 @@
 
-
+#sentinela{
+    width: 100%;
+    height: 5px;
+    background-color: red;
+}
 .content-homepage{
     background-color: rgb(255, 255, 255);
 }
@@ -12,6 +16,7 @@
 .h1-class-home{
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
+    font-size: 20px;
 }
 
 .card-item{
@@ -26,4 +31,12 @@
     display: flex;
     justify-content: center;
     
+}
+
+.card-item:hover {background-color: #d9d9d9}
+
+.card-item:active {
+  background-color: #d9d9d9;
+  box-shadow: 0 5px #d9d9d9;
+  transform: translateY(5px);
 }
