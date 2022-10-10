@@ -33,7 +33,6 @@ export function Home() {
     var regions: any = document.querySelectorAll('Americas');
     var i = 0;
 
-
     useEffect(() => {
         if(getnew == null){
             var requestOptions: any = {
@@ -53,13 +52,13 @@ export function Home() {
             setCountries(getnew);
         } 
         
-    }, [])
+    }, []);
 
     useEffect(() => {
         localStorage.setItem('newhomedata', JSON.stringify(countries));
         getnew = JSON.parse(localStorage.getItem('newhomedata')!);
         //console.log(getnew);
-    },[countries])
+    },[countries]);
 
     //scrollInfinito
     useEffect(() => {//efeito de scroll infinito
@@ -90,37 +89,40 @@ export function Home() {
             }
         }
         
-            window.addEventListener('wheel', infiniteScroll)
-            window.addEventListener('scroll', infiniteScroll)
+            window.addEventListener('wheel', infiniteScroll);
+            window.addEventListener('scroll', infiniteScroll);
         return () => {
-            window.removeEventListener('wheel', infiniteScroll)
-            window.removeEventListener('scroll', infiniteScroll)
+            window.removeEventListener('wheel', infiniteScroll);
+            window.removeEventListener('scroll', infiniteScroll);
     
         };
         
         
-    }, [scroll, height])
-    
-      
+    }, [scroll, height]); 
 
     return(     
-        <>
-            <Navbar/>
-            <div className="container mt-3">
-                <div className="content-homepage">
-                    <div className="row justify-content-around">
-                        <div className="col-6 col-md-5 mt-3">
+        <>  
+            <div className="content-homepage">
+                <Navbar/> 
+                <div>
+                    <div className="d-flex justify-content-between mt-4 mb-4">
+                        <div className="">
                             <Input type="text" 
                                 className="input-search" 
                                 placeholder='Search for a country' 
                                 onChange = {(e: any) => setSearch(e.target.value)}
                                 />
                         </div>
-                        <div className="col-6 col-md-5 mt-3">
-                            <Select options={options} onChange={(e : any) => setFilterRegion(e.value)}/>
+                        <div className="">
+                            <Select 
+                                placeholder={"Filter by region"}
+                                options={options} 
+                                onChange={(e : any) => 
+                                setFilterRegion(e.value)}
+                            />
                         </div>
-                    </div>
-                    <div className="row mt-3">
+                    </div>                
+                    <div>
                         <div className="col d-flex flex-wrap justify-content-center">  
                             {countries.filter((item: any) => 
                             item?.name.official.toLowerCase().includes(search.toLowerCase())
@@ -136,31 +138,27 @@ export function Home() {
                             ).map((itemMap: any, index: any) => {
                                     return(
                                         <FadeIn>
-                                            <button className="card-item" value={index} onClick={() => {
-                                                
+                                            <button className="card-item" value={index} onClick={() => {                                                
                                                 navigate("/details");
-                                                localStorage.setItem('homedata', JSON.stringify(itemMap));
-
-                                                // console.log(itemMap);
+                                                localStorage.setItem('homedata', JSON.stringify(itemMap));                                                
                                             } }>
-                                                {
-                                                    
+                                                { 
                                                     regions.forEach(function(item: any){
                                                         console.log(item);
                                                     })
                                                 }
+                                                <div className="">
 
-                                                <div>
-                                                    <div className="mt-3 mx-3" style={{ width: '15rem', minHeight: '305px' }}>
-                                                        <div>
-                                                            <img loading="lazy" src={itemMap?.flags.svg} className="mb-3 " style={{ height: '160px' }} />
-                                                        </div>
-                                                        <div>
-                                                            <strong className="h1-class-home mt-3">{itemMap?.name.common}</strong>
-                                                            <p className="p-class-home"><strong>Population: </strong>{itemMap?.population}</p>
-                                                            <p className="p-class-home"><strong>Region: </strong>{itemMap?.region}</p>
-                                                            <p className="p-class-home"><strong>Capital: </strong>{itemMap?.capital}</p>
-                                                        </div>
+                                                </div>
+                                                <div className="card">
+                                                    <div className="div-img">
+                                                        <img loading="lazy" src={itemMap?.flags.svg} className="img-size" />
+                                                    </div>
+                                                    <div className="d-flex flex-column card-item">
+                                                        <span className="h1-class-home mt-3">{itemMap?.name.common}</span>
+                                                        <span className="p-class-home"><strong>Population: </strong>{itemMap?.population.toLocaleString('pt-BR')}</span>
+                                                        <span className="p-class-home"><strong>Region: </strong>{itemMap?.region}</span>
+                                                        <span className="p-class-home"><strong>Capital: </strong>{itemMap?.capital}</span>
                                                     </div>
                                                 </div>
                                             </button>
