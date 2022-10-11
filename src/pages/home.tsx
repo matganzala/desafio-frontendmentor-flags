@@ -104,8 +104,8 @@ export function Home() {
         <>  
             <div className="content-homepage">
                 <Navbar/> 
-                <div>
-                    <div className="d-flex justify-content-between mt-4 mb-4">
+                <div className="container">
+                    <div className="d-flex justify-content-between mt-5 mb-5">
                         <div className="">
                             <Input type="text" 
                                 className="input-search" 
@@ -122,7 +122,7 @@ export function Home() {
                             />
                         </div>
                     </div>                
-                    <div>
+                    <div >
                         <div className="col d-flex flex-wrap justify-content-center">  
                             {countries.filter((item: any) => 
                             item?.name.official.toLowerCase().includes(search.toLowerCase())
@@ -135,10 +135,10 @@ export function Home() {
                                         return item;
                                     }
                             }
-                            ).map((itemMap: any, index: any) => {
+                            ).map((itemMap: any) => {
                                     return(
                                         <FadeIn>
-                                            <button className="card-item" value={index} onClick={() => {                                                
+                                            <div className="card-item mx-4 mb-5 " onClick={() => {                                                
                                                 navigate("/details");
                                                 localStorage.setItem('homedata', JSON.stringify(itemMap));                                                
                                             } }>
@@ -147,21 +147,18 @@ export function Home() {
                                                         console.log(item);
                                                     })
                                                 }
-                                                <div className="">
-
-                                                </div>
                                                 <div className="card">
                                                     <div className="div-img">
                                                         <img loading="lazy" src={itemMap?.flags.svg} className="img-size" />
                                                     </div>
-                                                    <div className="d-flex flex-column card-item">
-                                                        <span className="h1-class-home mt-3">{itemMap?.name.common}</span>
-                                                        <span className="p-class-home"><strong>Population: </strong>{itemMap?.population.toLocaleString('pt-BR')}</span>
-                                                        <span className="p-class-home"><strong>Region: </strong>{itemMap?.region}</span>
-                                                        <span className="p-class-home"><strong>Capital: </strong>{itemMap?.capital}</span>
+                                                    <div className="d-flex flex-column card-item p-4">
+                                                        <span className="h1-class-home mt-1 mb-1">{itemMap?.name.common}</span>
+                                                        <span className="p-class-home mt-1"><span className="h2-class-home" >Population: </span>{itemMap?.population.toLocaleString('pt-BR')}</span>
+                                                        <span className="p-class-home mt-1"><span className="h2-class-home">Region: </span>{itemMap?.region}</span>
+                                                        <span className="p-class-home mt-1"><span className="h2-class-home">Capital: </span>{itemMap?.capital}</span>
                                                     </div>
                                                 </div>
-                                            </button>
+                                            </div>
                                         </FadeIn>
                                     )
                                 }).slice(0, limite)  }                                         

@@ -5,29 +5,39 @@
     background-color: red;
 }
 .content-homepage{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     background-color: hsl(0, 0%, 98%);
 }
 
 .p-class-home{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 16px;
 
 }
 
 .h1-class-home{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-weight: bold;
     font-size: 20px;
+}
+
+.h2-class-home{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+
 }
 
 .card{
     border-radius: 5px;
     border: 1px solid #fff;
+    -webkit-box-shadow: 4px 8px 20px 1px hsl(0, 0%, 95%); 
+    box-shadow: 4px 8px 20px 1px hsl(0, 0%, 95%);
+    /* width: 100%; */
 }
 
 .card-item{
-    font-family: 'Open Sans', sans-serif;    
-    max-width: 250px;   
+    font-family: 'Nunito Sans', sans-serif;    
+    max-width: 350px;   
     
 }
 
@@ -44,7 +54,7 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     overflow: hidden;
-    width: 250px;
+    width: 260px;
     height: 180px;
     object-fit: cover;
     
