@@ -8,10 +8,7 @@ export function Navbar() {
             <div className="navbar-content d-flex">
                 <div className="col-6 col-md-6 align-self-center text-center">
                     <p className="h1-class-home">Where in the world?</p> 
-                </div>
-                <div className="col-6 col-md-6 align-self-center text-center">
-                
-                </div>
+                </div>               
             </div>
             
         </>

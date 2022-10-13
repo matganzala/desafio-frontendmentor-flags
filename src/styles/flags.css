@@ -1,0 +1,129 @@
+#sentinela{
+    width: 100%;
+    height: 5px;
+    background-color: red;
+}
+
+.p-class-home{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 16px;
+
+}
+
+.h1-class-home{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.h2-class-home{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+
+}
+
+.card{
+    border-radius: 5px;
+    border: 1px solid #fff;
+    -webkit-box-shadow: 4px 8px 20px 1px hsl(0, 0%, 95%); 
+    box-shadow: 4px 8px 20px 1px hsl(0, 0%, 95%);
+    /* width: 100%; */
+}
+
+.card-item{
+    font-family: 'Nunito Sans', sans-serif;    
+    max-width: 270px;  
+    
+}
+
+.card-item:hover {background-color: #d9d9d9}
+
+.card-item:active {
+  background-color: #d9d9d9;
+  box-shadow: 0 5px #d9d9d9;
+  transform: translateY(5px);
+}
+
+.img-size{
+    display: block;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow: hidden;
+    width: 270px;
+    height: 180px;
+    object-fit: cover;
+    
+    
+}
+
+.input-search{
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    height: 45px;
+    width: 100%;
+    padding-left: 20px;
+    
+}
+
+.input-search::placeholder{
+    color: #cfcfcf;
+
+}
+
+.css-1s2u09g-control{
+    border-radius: 5px;
+    border: 1px solid #fff!important;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15)!important;
+    background-color: #fff;
+    height: 45px;
+    max-width: 250px;
+    padding-left: 20px;
+
+}
+.css-14el2xx-placeholder {
+    color: #cfcfcf!important;
+    grid-area: 1/1/2/3;
+    margin-left: 2px;
+    margin-right: 2px;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif!important;    
+}
+
+.css-1okebmr-indicatorSeparator{
+    background-color: #fff!important;
+}
+
+
+.select-search{
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    height: 45px;
+    width: 100%;
+    padding-left: 20px;
+    appearance: none;
+    font-family: 'Nunito Sans', sans-serif;  
+    color: #cfcfcf;
+
+}
+
+
+.select-search::after{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    line-height: 38px;
+    content: '\2228';
+    text-align: center;
+    color: #0a0a0a;
+    font-size: 24px;
+    border-left: 1px solid #3C1C78;
+    z-index: -1;
+
+}
+   
+  
+ 
