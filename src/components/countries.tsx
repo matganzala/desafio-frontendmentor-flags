@@ -1,12 +1,12 @@
-import { Input } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import FadeIn from "react-fade-in";
 import { useNavigate } from "react-router-dom";
 import Select from 'react-select';
 import '../styles/flags.css';
+import { Details } from "./details-countries";
 
 
-export function Countries({objectInformation, objectCountries, setContriesForPageDetails}: any){
+export function Countries({objectInformation} : any){
     const options: any = [
         { value: 'Africa', label: 'Africa'},
         { value: 'Americas', label: 'Americas' },
@@ -17,12 +17,10 @@ export function Countries({objectInformation, objectCountries, setContriesForPag
     const [filterRegion, setFilterRegion] = useState("");
     const [countries, setCountries] = useState([]);
     const [search, setSearch] = useState("");
-    //const [infinite, setInfinite] = useState(true);
+    const [countriesInformation, setCountriesInformation] = useState({});    
     const [limite, setLimite] = useState(20);
     const [scroll, setScroll] = useState(0);
-    const [heigth, setHeigth] = useState(0);
-
-    
+    const [heigth, setHeigth] = useState(0); 
     
     var navigate = useNavigate();
     var getnew: any = null;
@@ -96,20 +94,10 @@ export function Countries({objectInformation, objectCountries, setContriesForPag
         
         
     }, [scroll, heigth]); 
-
-    // function handleObjectCountries(){
-    //     objectCountries()
-    // }
-
-    function largerPopulation(){
-        
-    }
-
-    function handleBringInformation(){
-        objectInformation()
-    }
     return(
-        <div className="container">
+        <>
+            <div className="content-countries">
+                <div className="container">
                     <div className="row d-flex justify-content-center mt-5 mb-5">
                         <div className="col-12 col-md-4">
                             <input 
@@ -121,14 +109,13 @@ export function Countries({objectInformation, objectCountries, setContriesForPag
                         </div>
                         <div className="col-12 col-md-4 mt-2 mt-md-0 mt-lg-0">                            
                             <Select 
-                                //className='select-search' 
                                 placeholder='Filter by region'
                                 onChange={(e : any) => setFilterRegion(e.value)}
                                 options={options}
                             />                       
                         </div>
                     </div>                
-                    <div >
+                    <div>
                         <div className="col d-flex flex-wrap justify-content-center">  
                             {countries.filter((item: any) => 
                             item?.name.official
@@ -144,35 +131,88 @@ export function Countries({objectInformation, objectCountries, setContriesForPag
                                     }
                             }
                             ).map((itemMap: any) => {
-                                //console.log(itemMap.car.signs);
+                                function HandleBringCoutries(){
+                                    var objectCountries: any = 
+                                    {                
+                                                         
+                                        id: itemMap?.cca3,                                        
+                                        flag: itemMap?.flags.svg,
+                                        name: itemMap?.name.common,
+                                        nativename: itemMap?.name.nativeName,
+                                        population: itemMap?.population.toLocaleString('pt-BR'),
+                                        region: itemMap?.region,
+                                        subregion: itemMap?.subregion,
+                                        capital: itemMap?.capital,
+                                        currencies: itemMap?.currencies,
+                                        language: itemMap?.languages,
+                                        borders: itemMap?.borders,
+                                    }
+                                    
+                                    console.log(objectCountries);
+                                } 
                                     return(
                                         <FadeIn>
-                                            <div className="card-item mx-4 mb-5 " onClick={() => {                                                
-                                                navigate("/details");
-                                                localStorage.setItem('homedata', JSON.stringify(itemMap));                                                
+                                            <div 
+                                                className="card-item mx-4 mb-5 " 
+                                                onClick={() => {                                                
+                                                //navigate("/details");
+                                                HandleBringCoutries();
+                                                //localStorage.setItem('homedata', JSON.stringify(itemMap));                                                
                                             } }>
                                                 { 
                                                     regions.forEach(function(item: any){
-                                                        console.log(item);
+                                                        return console.log(itemMap.population);
                                                     })
                                                 }
                                                 <div className="card">
                                                     <div className="div-img">
-                                                        <img loading="lazy" src={itemMap?.flags.svg} className="img-size" />
+                                                        <img 
+                                                            loading="lazy" 
+                                                            src={itemMap?.flags.svg} 
+                                                            className="img-size" 
+                                                        />
                                                     </div>
                                                     <div className="d-flex flex-column card-item p-4">
-                                                        <span className="h1-class-home mt-1 mb-1">{itemMap?.name.common}</span>
-                                                        <span className="p-class-home mt-1"><span className="h2-class-home" >Population: </span>{itemMap?.population.toLocaleString('pt-BR')}</span>
-                                                        <span className="p-class-home mt-1"><span className="h2-class-home">Region: </span>{itemMap?.region}</span>
-                                                        <span className="p-class-home mt-1"><span className="h2-class-home">Capital: </span>{itemMap?.capital}</span>
+                                                        <span 
+                                                            className="h1-class-home mt-1 mb-1">
+                                                                {itemMap?.name.common}
+                                                        </span>
+                                                        <span 
+                                                            className="p-class-home mt-1">
+                                                            <span 
+                                                                className="h2-class-home" >
+                                                                Population: {''}  
+                                                            </span>
+                                                                    {itemMap?.population.toLocaleString('pt-BR')}
+                                                        </span>
+                                                        <span 
+                                                            className="p-class-home mt-1">
+                                                            <span 
+                                                                className="h2-class-home">
+                                                                Region: {''} 
+                                                            </span>
+                                                                {itemMap?.region}
+                                                        </span>
+                                                        <span 
+                                                            className="p-class-home mt-1">
+                                                            <span 
+                                                                className="h2-class-home">
+                                                                    Capital: {''}  
+                                                            </span>
+                                                                {itemMap?.capital}
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </FadeIn>
                                     )
-                                }).slice(0, limite).sort()  }                                         
+                                }).slice(0, limite).sort()};                                         
                         </div>
                     </div>
                 </div>
+            </div>
+
+
+        </> 
     )
 }

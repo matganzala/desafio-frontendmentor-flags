@@ -4,6 +4,11 @@
     background-color: red;
 }
 
+.content-countries{
+    background-color: hsl(0, 0%, 98%);
+}
+
+
 .p-class-home{
     font-family: 'Nunito Sans', sans-serif;
     font-size: 16px;

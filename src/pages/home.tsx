@@ -10,30 +10,7 @@ import { height } from "@mui/system";
 import { Countries } from "../components/countries";
 
 export function Home() {
-    const [countries, setCountries] = useState({});
     const [countriesInformation, setCountriesInformation] = useState({});
-
-    
-
-    
-
-    function objectCountries(
-        countryItem: any,
-        populationItem: any,
-        regionItem: any,
-        capitalItem: any
-    ){
-    const newObjCountries = {
-        ...countries,
-        country: countryItem,
-        population: populationItem,
-        region: regionItem,
-        capital: capitalItem
-
-    }
-
-    setCountries(newObjCountries);
-    }
     
     function objectInformation(
             flagItem: any, 
@@ -43,7 +20,6 @@ export function Home() {
             regionItem: any, 
             subregionItem: any, 
             capitalItem: any,
-            levelDomainItem: any,
             currenciesItem: any,
             languageItem: any,
             bordersItem: any)
@@ -57,7 +33,6 @@ export function Home() {
         region: regionItem,
         subregion: subregionItem,
         capital: capitalItem,
-        leveldomain: levelDomainItem,
         currencies: currenciesItem,
         language: languageItem,
         borders: bordersItem,
@@ -72,9 +47,7 @@ export function Home() {
             <div className="content-homepage">
                 <Navbar/> 
                 <Countries
-                    objectCountries={objectCountries} 
                     objectInformation={objectInformation}
-                    setContriesForPageDetails={setContriesForPageDetails}
                 />
             </div>
         </>
