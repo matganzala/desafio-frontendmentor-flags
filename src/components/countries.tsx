@@ -5,8 +5,7 @@ import Select from 'react-select';
 import '../styles/flags.css';
 import { Details } from "./details-countries";
 
-
-export function Countries({objectInformation} : any){
+export function Countries(){
     const options: any = [
         { value: 'Africa', label: 'Africa'},
         { value: 'Americas', label: 'Americas' },
@@ -94,6 +93,10 @@ export function Countries({objectInformation} : any){
         
         
     }, [scroll, heigth]); 
+
+    useEffect(() => {
+        console.log(countriesInformation);
+    }, [countriesInformation])
     return(
         <>
             <div className="content-countries">
@@ -134,7 +137,8 @@ export function Countries({objectInformation} : any){
                                 function HandleBringCoutries(){
                                     var objectCountries: any = 
                                     {                
-                                                         
+                                                
+                                        ...countriesInformation,
                                         id: itemMap?.cca3,                                        
                                         flag: itemMap?.flags.svg,
                                         name: itemMap?.name.common,
@@ -148,8 +152,10 @@ export function Countries({objectInformation} : any){
                                         borders: itemMap?.borders,
                                     }
                                     
-                                    console.log(objectCountries);
+                                    setCountriesInformation(objectCountries)
+                                    
                                 } 
+                                
                                     return(
                                         <FadeIn>
                                             <div 

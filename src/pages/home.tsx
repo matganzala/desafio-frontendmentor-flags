@@ -9,45 +9,14 @@ import FadeIn from 'react-fade-in';
 import { height } from "@mui/system";
 import { Countries } from "../components/countries";
 
-export function Home() {
-    const [countriesInformation, setCountriesInformation] = useState({});
-    
-    function objectInformation(
-            flagItem: any, 
-            nameItem: any, 
-            nativeItem: any, 
-            populationItem: any, 
-            regionItem: any, 
-            subregionItem: any, 
-            capitalItem: any,
-            currenciesItem: any,
-            languageItem: any,
-            bordersItem: any)
-        {
-    const newObjCountriesInformation = {
-        ...countriesInformation,
-        flag: flagItem,
-        name: nameItem,
-        nativeName: nativeItem,
-        population: populationItem,
-        region: regionItem,
-        subregion: subregionItem,
-        capital: capitalItem,
-        currencies: currenciesItem,
-        language: languageItem,
-        borders: bordersItem,
-    }
-       
-        setCountriesInformation(newObjCountriesInformation);
-        console.log(countriesInformation);
-    };
+export function Home() {    
+   
 
     return( 
         <>  
             <div className="content-homepage">
                 <Navbar/> 
                 <Countries
-                    objectInformation={objectInformation}
                 />
             </div>
         </>
