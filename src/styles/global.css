@@ -4,11 +4,6 @@
     background-color: red;
 }
 
-.content-countries{
-    background-color: hsl(0, 0%, 98%);
-}
-
-
 .p-class-home{
     font-family: 'Nunito Sans', sans-serif;
     font-size: 16px;
@@ -32,24 +27,28 @@
     border: 1px solid #fff;
     -webkit-box-shadow: 4px 8px 20px 1px hsl(0, 0%, 95%); 
     box-shadow: 4px 8px 20px 1px hsl(0, 0%, 95%);
-    /* width: 100%; */
+    
+    /* //width: 400px */
 }
 
 .card-item{
     font-family: 'Nunito Sans', sans-serif;    
-    max-width: 270px;  
-    
+    max-width: 270px; 
+    max-height: 180px;
+    border-radius: 5px; 
+    padding: 20px 15px 15px 15px ;   
+}
+.card-item:hover, .card:hover {
+    background-color: #d9d9d9;
 }
 
-.card-item:hover {background-color: #d9d9d9}
-
-.card-item:active {
+.card-item:active, .card:active {
   background-color: #d9d9d9;
-  box-shadow: 0 5px #d9d9d9;
-  transform: translateY(5px);
+  transform: translateY(15px);
 }
 
-.img-size{
+
+.flags-sizing{
     display: block;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -58,45 +57,37 @@
     height: 180px;
     object-fit: cover;
     
+}
+
+.content-countries{
+    background-color: hsl(0, 0%, 98%);
+    font-family: 'Nunito Sans', sans-serif;
     
+}
+
+.chakra-ui-light{
+    background-color: hsl(0, 0%, 98%);
+
 }
 
 .input-search{
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
-    background-color: #fff;
-    height: 45px;
-    width: 100%;
-    padding-left: 20px;
-    
-}
-
-.input-search::placeholder{
-    color: #cfcfcf;
-
-}
-
-.css-1s2u09g-control{
     border-radius: 5px;
     border: 1px solid #fff!important;
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15)!important;
     background-color: #fff;
     height: 45px;
-    max-width: 250px;
+    width: 100%;
     padding-left: 20px;
 
 }
-.css-14el2xx-placeholder {
+
+.input-search::placeholder {
     color: #cfcfcf!important;
     grid-area: 1/1/2/3;
     margin-left: 2px;
     margin-right: 2px;
     box-sizing: border-box;
     font-family: 'Nunito Sans', sans-serif!important;    
-}
-
-.css-1okebmr-indicatorSeparator{
-    background-color: #fff!important;
 }
 
 
@@ -110,9 +101,7 @@
     appearance: none;
     font-family: 'Nunito Sans', sans-serif;  
     color: #cfcfcf;
-
 }
-
 
 .select-search::after{
     position: absolute;
