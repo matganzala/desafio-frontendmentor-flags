@@ -13,43 +13,12 @@ export function Home() {
     const [idParams, setIdParams] = useState(''); 
     var navigate = useNavigate();
 
-    function returnInformation(
-        name: any, 
-        flag: any, 
-        cca3: any, 
-        nativeName: any, 
-        population: any, 
-        region: any, 
-        subRegion: any, 
-        capital: any,
-        topLevelDomain: any,
-        currencies: any,
-        languages: any,
-        borders: any){
-        const returnNewContries: any =
-            {
-                name: name,
-                flag: flag,
-                cca3: cca3,
-                nativeName: nativeName,
-                population: population,
-                region: region,
-                subRegion: subRegion,
-                capital: capital,
-                topLevelDomain: topLevelDomain,
-                currencies: currencies,
-                languages: languages,
-                borders: borders
-            }        
-            setIdParams(returnNewContries); 
-          
-    }
-
     useEffect(() => {   
         if(idParams != ''){
-            console.log(idParams)
-            //localStorage.setItem('dataInformation', JSON.stringify(idParams));
-            //navigate('/details');
+            console.log(idParams);
+            //localStorage.clear()
+            localStorage.setItem('countries', JSON.stringify(idParams));
+            navigate('/details');
         }else{
             console.log("Error");
         }      
@@ -78,7 +47,7 @@ export function Home() {
                                     setCountries={setCountries}
                                     filterRegion={filterRegion}
                                     search={search}
-                                    returnInformation={returnInformation}
+                                    setIdParams={setIdParams}
                                 />
                             </div>
                         </div>                          

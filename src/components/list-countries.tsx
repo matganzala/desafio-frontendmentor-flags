@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import '../styles/global.css';
 
-export function ListCountries({countries, limite, search, filterRegion, returnInformation}: any){      
+export function ListCountries({countries, limite, search, filterRegion, setIdParams}: any){      
     return(
         <Fragment>
             {
@@ -11,7 +11,7 @@ export function ListCountries({countries, limite, search, filterRegion, returnIn
                 item?.name.common
                     .replace(/'/g, '')
                     .toLowerCase()
-                    .includes(search.toLowerCase())
+                    .includes(search.toLowerCase())                   
             )
             .filter((item: any) => {
                 if(filterRegion == ""){
@@ -29,23 +29,7 @@ export function ListCountries({countries, limite, search, filterRegion, returnIn
                         <div 
                             className="card mx-4 mt-4" 
                             key={index} 
-                            onClick={() => {
-                                returnInformation(
-                                    item?.name.common, 
-                                    item?.flags.svg, 
-                                    item?.name.nativeName,
-                                    item?.population,
-                                    item?.region,
-                                    item?.subRegion,
-                                    item?.capital,
-                                    item?.topLevelDomain,
-                                    item?.currencies,
-                                    item?.languages,
-                                    item?.borders,
-                                    
-                                )
-                                
-                                }}>
+                            onClick={() => {setIdParams(item)}}>
                             <div>
                                 <img 
                                     loading="lazy" 
