@@ -13,7 +13,7 @@
 .h1-class-home{
     font-family: 'Nunito Sans', sans-serif;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 20px;    
 }
 
 .h2-class-home{
@@ -44,7 +44,7 @@
 
 .card-item:active, .card:active {
   background-color: #d9d9d9;
-  transform: translateY(15px);
+  transform: translateY(2px);
 }
 
 
@@ -93,6 +93,7 @@
 
 .select-search{
     border-radius: 5px;
+    border: 1px solid #fff!important;
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
     background-color: #fff;
     height: 45px;

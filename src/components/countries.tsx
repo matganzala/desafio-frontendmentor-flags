@@ -1,33 +1,29 @@
 import React, { useEffect, useState } from "react";
 import '../styles/global.css';
-import FadeIn from 'react-fade-in';
 import { getCountries } from "../API/apicountries";
-import { ListCountries } from "./listcountries";
+import { ListCountries } from "./list-countries";
 
-export function Countries({filterRegion, search}: any) {    
-    const [countries, setCountries] = useState('');
+export function Countries({filterRegion, search, countries, setCountries, returnInformation}: any) {  
     const [limite, setLimite] = useState(20);
     const [scroll, setScroll] = useState(0);
-    const [heigth, setHeigth] = useState(0);   
+    const [heigth, setHeigth] = useState(0); 
 
     //scrollInfinito
-    useEffect(() => {//efeito de scroll infinito
+    useEffect(() => {
         const infiniteScroll = () => {
             var heigthAuxiliar: any = document.body.offsetHeight;
             var wait = false;
             setScroll(window.scrollY);
             setHeigth(heigthAuxiliar - window.innerHeight);
-            //console.log(event);//consologo no evento de scroll
             var infinite = true;
             if(limite == countries.length){
                 infinite = false;
             }
             if(infinite){
                 if(scroll >= heigth * .80 && !wait){
-                    //setScroll((scrolls) => [...scrolls, scrolls.length + 1])//desestruturando as páginas
                     var limiteAuxiliar: any = 20;
                     limiteAuxiliar = limiteAuxiliar + 20;
-                    console.log(limiteAuxiliar);
+                    //console.log(limiteAuxiliar);
                     setLimite(limite + 20);
                     console.log(true);
                     
@@ -56,17 +52,17 @@ export function Countries({filterRegion, search}: any) {
     }
 
     useEffect(() => {
-        fetchCountries();
-        //console.log(returnCountries);
+        fetchCountries();        
     }, []);
 
     return(
-        <>   
-            <ListCountries 
+        <>  
+            <ListCountries
+                returnInformation={returnInformation}
                 countries={countries}
                 limite={limite}
                 filterRegion={filterRegion}
-                search={search}
+                search={search}      
             />
         </>
     )

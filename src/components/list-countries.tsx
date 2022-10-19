@@ -1,8 +1,7 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import '../styles/global.css';
 
-export function ListCountries({countries, limite, search, filterRegion}: any){
-    //console.log(countries);
+export function ListCountries({countries, limite, search, filterRegion, returnInformation}: any){      
     return(
         <Fragment>
             {
@@ -17,16 +16,36 @@ export function ListCountries({countries, limite, search, filterRegion}: any){
             .filter((item: any) => {
                 if(filterRegion == ""){
                     return item;
-
                 }
+
                 else if(item?.region == filterRegion){
                     return item;
                 }
             })
-            .map((item: any, index: any) => {
+            .map((item: any, index: any) => { 
+                //console.log(index)                                          
                 return(
                     <>  
-                        <div className="card mx-4 mt-4" key={index}>
+                        <div 
+                            className="card mx-4 mt-4" 
+                            key={index} 
+                            onClick={() => {
+                                returnInformation(
+                                    item?.name.common, 
+                                    item?.flags.svg, 
+                                    item?.name.nativeName,
+                                    item?.population,
+                                    item?.region,
+                                    item?.subRegion,
+                                    item?.capital,
+                                    item?.topLevelDomain,
+                                    item?.currencies,
+                                    item?.languages,
+                                    item?.borders,
+                                    
+                                )
+                                
+                                }}>
                             <div>
                                 <img 
                                     loading="lazy" 
@@ -36,13 +55,9 @@ export function ListCountries({countries, limite, search, filterRegion}: any){
                             </div>
                             <div className="d-flex flex-column card-item">
                                 <span 
-                                    className="h1-class-home mt-1 mb-1">
+                                    className="d-inline-block text-truncate h1-class-home mt-1 mb-1 ">
                                         {
-                                            
-                                            item?.name.common
-                                            .replace(/,/g, '')
-                                            .slice(0, [0, 1])
-                                            
+                                            item?.name.common                                            
                                         }
                                 </span>
                                 <span 
@@ -51,7 +66,7 @@ export function ListCountries({countries, limite, search, filterRegion}: any){
                                         className="h2-class-home" >
                                         Population: {''}  
                                     </span>
-                                            {item?.population.toLocaleString('pt-BR')}
+                                        {item?.population.toLocaleString('pt-BR')}
                                 </span>
                                 <span 
                                     className="p-class-home mt-1">
@@ -76,13 +91,13 @@ export function ListCountries({countries, limite, search, filterRegion}: any){
 
                 );   
 
-            }).slice(0, limite).sort()
+            }
+            
+            ).slice(0, limite).sort()
             : null
         };            
         </Fragment>
 
     );
-    
-
 
 };
