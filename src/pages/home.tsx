@@ -7,8 +7,8 @@ import { InputFilter, SelectFilter } from "./util";
 import { useNavigate } from "react-router-dom";
 
 export function Home() { 
-    const [search, setSearch] = useState("");
-    const [filterRegion, setFilterRegion] = useState("");
+    const [search, setSearch] = useState('');
+    const [filterRegion, setFilterRegion] = useState('');
     const [countries, setCountries] = useState('');
     const [idParams, setIdParams] = useState(''); 
     var navigate = useNavigate();
@@ -28,13 +28,13 @@ export function Home() {
         <>
             <div className="content-countries">
                 <Navbar/>
-                    <div className="container">
+                <div className="container">
                     <FadeIn>
                         <div className="row d-flex justify-content-center mt-5 mb-5">
-                            <div className="col-12 col-md-6">
+                            <div className="col-12 col-md-5">
                                 <InputFilter setSearch={setSearch} />  
                             </div>
-                            <div className="col-12 col-md-4 mt-2 mt-md-0 mt-lg-0">  
+                            <div className="col-12 col-md-3 mt-2 mt-md-0 mt-lg-0">  
                                 <SelectFilter setFilterRegion={setFilterRegion} />                                          
                             </div>
                         </div>
@@ -52,9 +52,8 @@ export function Home() {
                             </div>
                         </div>                          
                     </FadeIn>
-                    </div>                  
-                </div>  
-                                 
+                </div>
+            </div>                     
         </> 
     );
 

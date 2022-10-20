@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 import '../styles/global.css';
 
-export function SelectFilter({setFilterRegion}: any){
-    
+export function SelectFilter({setFilterRegion}: any){    
     return(
         <>
             <div className="content-countries">
@@ -25,8 +24,7 @@ export function SelectFilter({setFilterRegion}: any){
     
 }
 
-export function InputFilter({setSearch}: any){
-    
+export function InputFilter({setSearch}: any){    
     return(
         <>
             <div className="content-countries">

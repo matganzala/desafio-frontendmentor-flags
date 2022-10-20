@@ -5,13 +5,9 @@ import "../styles/navbar.css";
 export function Navbar() {
     return(
         <>
-            <div className="navbar-content">
-                <div className="row">
-                    <div className="col-6 col-md-6 ">
-                        <p className="h1-class-home">Where in the world?</p> 
-                    </div>
-                </div>
-                             
+            <div className="navbar-content d-flex justify-content-around align-items-center">
+                <span className="h1-class-home">Where in the world?</span> 
+                <button>DARK MODE</button>    
             </div>
             
         </>

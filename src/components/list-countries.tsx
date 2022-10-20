@@ -64,22 +64,19 @@ export function ListCountries({countries, limite, search, filterRegion, setIdPar
                                     className="p-class-home mt-1">
                                     <span 
                                         className="h2-class-home">
-                                            Capital: {''}  
+                                        Capital: {''}  
                                     </span>
                                         {item?.capital}
                                 </span>
                             </div>
                         </div>
-                        
                     </>
-
-                );   
-
+                ) 
             }
             
             ).slice(0, limite).sort()
             : null
-        };            
+        }           
         </Fragment>
 
     );
