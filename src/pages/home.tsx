@@ -10,13 +10,12 @@ export function Home() {
     const [search, setSearch] = useState('');
     const [filterRegion, setFilterRegion] = useState('');
     const [countries, setCountries] = useState('');
-    const [idParams, setIdParams] = useState(''); 
+    const [idParams, setIdParams] = useState('');
+    const [themeSwitch, setThemeSwitch] = useState(true);
     var navigate = useNavigate();
 
     useEffect(() => {   
         if(idParams != ''){
-            console.log(idParams);
-            //localStorage.clear()
             localStorage.setItem('countries', JSON.stringify(idParams));
             navigate('/details');
         }else{
@@ -26,10 +25,10 @@ export function Home() {
     
     return(
         <>
-            <div className="content-countries">
+            <div className="content-countries" id={!themeSwitch ? '#light' : '#dark'}>
                 <Navbar/>
-                <div className="container">
-                    <FadeIn>
+                <FadeIn>
+                    <div className="container">
                         <div className="row d-flex justify-content-center mt-5 mb-5">
                             <div className="col-12 col-md-5">
                                 <InputFilter setSearch={setSearch} />  
@@ -51,9 +50,9 @@ export function Home() {
                                 />
                             </div>
                         </div>                          
-                    </FadeIn>
-                </div>
-            </div>                     
+                    </div>
+                </FadeIn>
+            </div>                
         </> 
     );
 

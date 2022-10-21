@@ -13,21 +13,21 @@ export async function getCountries() {
       });
 
     return retur;    
-}
+};
 
-// export async function getCountries() {
-//     const API_URL: any = 'https://restcountries.com/v3.1/all';
-//     let retur = {};
-//     var request: any = {
-//         method: 'GET',
-//         redirect: 'follow'
-//       };
+export async function getCountriescca3(codeParams: any) {
+    const API_URL: any = `https://restcountries.com/v3.1/alpha/${codeParams}`;
+    let retur = {};
+    var request: any = {
+        method: 'GET',
+        redirect: 'follow'
+      };
      
-//     await fetch(API_URL, request)
-//       .then(response => response.json())
-//       .then(data => {
-//         retur = data;
-//       });
+    await fetch(API_URL, request)
+      .then(response => response.json())
+      .then(data => {
+        retur = data;
+      });
 
-//     return retur;    
-// }
+    return retur;    
+};

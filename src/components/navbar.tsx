@@ -7,7 +7,7 @@ export function Navbar() {
         <>
             <div className="navbar-content d-flex justify-content-around align-items-center">
                 <span className="h1-class-home">Where in the world?</span> 
-                <button>DARK MODE</button>    
+                <button className="dark-mode">DARK MODE</button>    
             </div>
             
         </>

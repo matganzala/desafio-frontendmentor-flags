@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import '../styles/global.css';
 
-export function ListCountries({countries, limite, search, filterRegion, setIdParams}: any){      
+export function MapCountries({countries, limite, search, filterRegion, setIdParams}: any){      
     return(
         <Fragment>
             {
@@ -11,7 +11,9 @@ export function ListCountries({countries, limite, search, filterRegion, setIdPar
                 item?.name.common
                     .replace(/'/g, '')
                     .toLowerCase()
-                    .includes(search.toLowerCase())                   
+                    .includes(search
+                            .toLowerCase()
+                            .trim())                   
             )
             .filter((item: any) => {
                 if(filterRegion == ""){

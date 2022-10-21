@@ -5,7 +5,7 @@ import '../styles/global.css';
 export function SelectFilter({setFilterRegion}: any){    
     return(
         <>
-            <div className="content-countries">
+            <div>
                 <select 
                     placeholder='Filter by region'
                     className="select-search"
@@ -27,7 +27,7 @@ export function SelectFilter({setFilterRegion}: any){
 export function InputFilter({setSearch}: any){    
     return(
         <>
-            <div className="content-countries">
+            <div>
                 <input 
                     type="text" 
                     className="input-search" 
@@ -37,6 +37,9 @@ export function InputFilter({setSearch}: any){
             </div>            
         </>
     )
+}
 
+export function DarkMode({SwitchMode}: any){
+    const [theme, setTheme] = useState("");
 
 }

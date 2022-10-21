@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import '../styles/global.css';
 import { getCountries } from "../API/apicountries";
-import { ListCountries } from "./list-countries";
+import { MapCountries } from "./map-countries";
 
 export function Countries({filterRegion, search, countries, setCountries, setIdParams}: any) {  
     const [limite, setLimite] = useState(20);
@@ -57,7 +57,7 @@ export function Countries({filterRegion, search, countries, setCountries, setIdP
 
     return(
         <>  
-            <ListCountries
+            <MapCountries
                 setIdParams={setIdParams}
                 countries={countries}
                 limite={limite}

@@ -1,8 +1,5 @@
-Filtro por nome - [x]
-Filtro por Região - [x]
-Página de informações - [x]
-Scroll Infinito - []
-Botão Limpar filtro - []
-Melhores Filtros (slider) - []
-Dark Mode - []
-Site mais dinâmico - []
+- React
+- Typescript
+- Bootstrap
+- React Router
+- React Icons
