@@ -43,7 +43,7 @@ export function Details() {
                                         <div className=" d-flex flex-column">
                                             <div className="mt-1">
                                                 <span>Name: </span>
-                                                <span>{getDataCountries?.name.official}</span>
+                                                <span >{getDataCountries?.name.official}</span>
                                             </div>
                                             <div className="mt-1">
                                                 <span>Population: </span>
@@ -65,7 +65,9 @@ export function Details() {
                                                 <span>Borders: </span>
                                             </div>
                                             <div className=" d-flex flex-wrap">                                                                                                
-                                                
+                                                {
+                                                    
+                                                }
                                             </div>
                                         </div> 
                                         <div className="d-flex flex-column">

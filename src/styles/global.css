@@ -62,14 +62,14 @@
 }
 
 
-@media screen and (prefers-color-scheme: dark){
+{/**@media screen and (prefers-color-scheme: dark){
     .content-countries{
         background-color: hsl(207, 26%, 17%);
         font-family: 'Nunito Sans', sans-serif; 
         min-height: 100vh;
         overflow-y: hidden;
     }
-} 
+} **/}
 
 @media screen and (prefers-color-scheme: light){
     .content-countries, #light{
