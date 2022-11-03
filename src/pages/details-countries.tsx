@@ -65,13 +65,7 @@ export function Details() {
                                                 <span>Borders: </span>
                                             </div>
                                             <div className=" d-flex flex-wrap">                                                                                                
-                                                {getDataCountries.borders.map((border: string) => {
-                                                    return (
-                                                        <div className="border-button mt-2 ms-1 d-flex flex-wrap align-items-center justify-content-center">
-                                                            <span>{border}</span>
-                                                        </div> 
-                                                    ) 
-                                                })}
+                                                
                                             </div>
                                         </div> 
                                         <div className="d-flex flex-column">
