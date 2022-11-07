@@ -2,88 +2,72 @@ import { height } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import FadeIn from "react-fade-in";
 import { useNavigate } from "react-router-dom";
+import { getCountriescca3 } from "../API/apicountries";
 import { Navbar } from "../components/navbar";
 
 export function Details() {
+    const [borders, setBorders] = useState('');    
     var getDataCountries = JSON.parse(localStorage.getItem('countries')!);
-    const [borders, setBorders] = useState(getDataCountries.borders);
     var navigate = useNavigate();
-    console.log(borders);
 
     function backHome(){
         navigate("/");
-    }
+    };
+
+    async function awaitBordersApi(){
+        getCountriescca3(borders);
+    };
+
+    useEffect(() => {
+        if(borders != ""){
+            awaitBordersApi();
+        }
+        
+    }, [borders]);
 
     return( 
         <>
             <div className="content-countries">
-                    <Navbar/>                    
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12 col-md-7 mt-5">
-                                <button 
-                                    className="back-button" 
-                                    onClick={backHome}>
-                                    BACK
-                                </button>
-                                <div className="flags mt-5">
-                                    <img                                         
-                                        src={getDataCountries?.flags.svg} 
-                                        className="img-thumbnail w-100 h-100"
-                                        style={{objectFit: 'cover', maxHeight: '300px', maxWidth:' 600px'}}
-                                    />
-                                </div>
-                            </div>
-                            <div className="col-12 col-md-4 d-block justify-content-center">
-                                <div className="row">
-                                    <div className="col-12 col-md-12 d-flex" style={{marginTop: '25px'}}>                                    
-                                        <span >{getDataCountries?.name.common}</span>
-                                    </div>
-                                    <div className="col-12 col-md-12 d-flex mb-5">
-                                        <div className=" d-flex flex-column">
-                                            <div className="mt-1">
-                                                <span>{getDataCountries?.name.official}</span>
-                                            </div>
-                                            <div className="mt-1">
-                                                <span>{getDataCountries?.population}</span>
-                                            </div>
-                                            <div className="mt-1">
-                                                <span>{getDataCountries?.region}</span>
-                                            </div>
-                                            <div className="mt-1">
-                                                <span>{getDataCountries?.subRegion}</span>
-                                            </div>
-                                            <div className="mt-1">
-                                                <span>{getDataCountries?.capital}</span>
-                                            </div>
-                                        </div> 
-                                        <div className=" ms-5 d-flex flex-column">
-                                            <div className="mt-1">
-                                                <span className="mt-1">{getDataCountries?.tld}</span>                                            
-                                            </div>
-                                            <div className="mt-1">
-                                                <span className="mt-1">
-                                                    {Object.values(getDataCountries.currencies).map((coin: any) => {
-                                                        return coin.name;
-                                                    })}
-                                                </span>
-                                            </div>
-                                            <div className="mt-1">
-                                                <span className="mt-1">
-                                                    {Object.values(getDataCountries.languages).map((language: any) => {
-                                                        return language;
-                                                    })};
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                                
+                <Navbar/>                    
+                <div className="container">
+                    <div className="row">
+                        <button 
+                            className="back-button" 
+                            onClick={backHome}>
+                            BACK
+                        </button>
+                        <div className="flags mt-5">
+                            <img                                         
+                                src={getDataCountries?.flags.svg} 
+                                className="img-thumbnail w-100 h-100"
+                                style={{objectFit: 'cover', maxHeight: '300px', maxWidth:' 600px'}}
+                            />
                         </div>
                     </div>
-                    
+                    <div className="row">
+                        <div className="d-flex flex-row">
+                            {
+                                getDataCountries.borders == undefined ? 
+                                    "SEM FRONTEIRAS" : 
+                                getDataCountries.borders.map((border: any, index: any) => {       
+                                    console.log(borders)                             
+                                    return(
+                                        <>
+                                            <button 
+                                                key={index}
+                                                className="border-button" 
+                                                onClick={(e: any) => {setBorders(e.target.value)}} 
+                                                value={border}
+                                            >
+                                                {border}
+                                            </button>
+                                        </>
+                                    )
+                                })
+                            };
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )

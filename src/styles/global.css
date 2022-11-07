@@ -93,6 +93,21 @@
     font-size: 15px;
 }
 
+.border-button{
+    border-radius: 5px;
+   text-align: center;
+    font-family: 'Nunito Sans', sans-serif; 
+    border: 1px solid #fff!important;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15)!important;
+    background-color: #fff;
+    height: 45px;
+    width: 60px;
+    margin: 20px;
+    color: #0a0a0a;
+    font-size: 15px;
+
+}
+
 .dark-mode{
     border-radius: 5px;
     font-family: 'Nunito Sans', sans-serif; 
