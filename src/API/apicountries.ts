@@ -26,9 +26,13 @@ export async function getCountriescca3(codeParams: any) {
     await fetch(API_URL, request)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
-        retur = data;
-      });
+          retur = data;        
+          localStorage.setItem('countries', JSON.stringify(data));
+          window.location.reload(true);
+          console.log(data)
+         
+        }
+      );
 
     return retur;    
 };
