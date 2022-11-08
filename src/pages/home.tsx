@@ -4,25 +4,14 @@ import FadeIn from 'react-fade-in';
 import { Countries } from "../components/countries";
 import { Navbar } from "../components/navbar";
 import { InputFilter, SelectFilter } from "./util";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Home() { 
     const [search, setSearch] = useState('');
     const [filterRegion, setFilterRegion] = useState('');
     const [countries, setCountries] = useState('');
-    const [idParams, setIdParams] = useState('');
     const [themeSwitch, setThemeSwitch] = useState(true);
-    var navigate = useNavigate();
 
-    useEffect(() => {   
-        if(idParams != ''){
-            localStorage.setItem('countries', JSON.stringify(idParams));
-            navigate('/details');
-        }else{
-            console.log("Error");
-        }      
-    }, [idParams]);
-    
     return(
         <>
             <div className="content-countries" id={!themeSwitch ? '#light' : '#dark'}>
@@ -38,15 +27,12 @@ export function Home() {
                             </div>
                         </div>
                         <div className="row d-flex justify-content-center mt-5 mb-5">
-                            <div
-                                className="col d-flex flex-wrap justify-content-center"
-                            >
+                            <div className="col d-flex flex-wrap justify-content-center">
                                 <Countries 
                                     countries={countries}
                                     setCountries={setCountries}
                                     filterRegion={filterRegion}
                                     search={search}
-                                    setIdParams={setIdParams}
                                 />
                             </div>
                         </div>                          

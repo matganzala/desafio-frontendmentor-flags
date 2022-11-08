@@ -3,7 +3,7 @@ import '../styles/global.css';
 import { getCountries } from "../API/apicountries";
 import { MapCountries } from "./map-countries";
 
-export function Countries({filterRegion, search, countries, setCountries, setIdParams}: any) {  
+export function Countries({filterRegion, search, countries, setCountries}: any) {  
     const [limite, setLimite] = useState(20);
     const [scroll, setScroll] = useState(0);
     const [heigth, setHeigth] = useState(0); 
@@ -58,7 +58,6 @@ export function Countries({filterRegion, search, countries, setCountries, setIdP
     return(
         <>  
             <MapCountries
-                setIdParams={setIdParams}
                 countries={countries}
                 limite={limite}
                 filterRegion={filterRegion}

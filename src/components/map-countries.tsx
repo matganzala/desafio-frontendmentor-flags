@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
+import { Link, matchPath, useNavigate } from "react-router-dom";
 import '../styles/global.css';
 
-export function MapCountries({countries, limite, search, filterRegion, setIdParams}: any){      
+export function MapCountries({countries, limite, search, filterRegion}: any){     
+    var navigate = useNavigate(); 
     return(
         <Fragment>
             {
@@ -24,14 +26,26 @@ export function MapCountries({countries, limite, search, filterRegion, setIdPara
                     return item;
                 }
             })
-            .map((item: any, index: any) => { 
-                //console.log(index)                                          
+            .map((item: any, index: any) => {
+                var ObjectCountries = {
+                    flag: item?.flags.svg,
+                    name: item?.name.common,
+                    border: item?.borders
+                };
+                              
+                const navigateDetails = () => {
+                    //navigate(`/details/${item}`)
+                    navigate(`/details/${JSON.stringify(ObjectCountries)}`);
+                };
+               
+                //console.log(item)                                                       
                 return(
                     <>  
-                        <div 
+                        <div
                             className="card mx-4 mt-4" 
                             key={index} 
-                            onClick={() => {setIdParams(item)}}>
+                            onClick={navigateDetails}                                                      
+                        >
                             <div>
                                 <img 
                                     loading="lazy" 
@@ -42,9 +56,7 @@ export function MapCountries({countries, limite, search, filterRegion, setIdPara
                             <div className="d-flex flex-column card-item">
                                 <span 
                                     className="d-inline-block text-truncate h1-class-home mt-1 mb-1 ">
-                                        {
-                                            item?.name.common                                            
-                                        }
+                                        {item?.name.common}
                                 </span>
                                 <span 
                                     className="p-class-home mt-1">
