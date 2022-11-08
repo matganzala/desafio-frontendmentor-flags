@@ -20,7 +20,10 @@ export function Details() {
     return( 
         <>
             <div className="content-countries">
-                <Navbar/>            
+                <Navbar/>
+                <div>
+                    <h1>{}</h1>
+                </div>            
             </div>
         </>
     )

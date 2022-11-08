@@ -26,16 +26,16 @@ export function MapCountries({countries, limite, search, filterRegion}: any){
                     return item;
                 }
             })
-            .map((item: any, index: any) => {
-                var ObjectCountries = {
-                    flag: item?.flags.svg,
-                    name: item?.name.common,
-                    border: item?.borders
-                };
+            .map((item: any, index: any) => {          
                               
                 const navigateDetails = () => {
-                    //navigate(`/details/${item}`)
-                    navigate(`/details/${JSON.stringify(ObjectCountries)}`);
+                    navigate(`/details/
+                        name:${item?.name.common}
+                        capital:${item?.capital}
+                        population:${item?.population}
+                        `
+                        );
+                    //navigate(`/details/${JSON.stringify(ObjectCountries)}`);
                 };
                
                 //console.log(item)                                                       
