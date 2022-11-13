@@ -2,27 +2,35 @@ import React, { Fragment } from "react";
 import { Link, matchPath, useNavigate } from "react-router-dom";
 import '../styles/global.css';
 
-export function MapCountries({countries, limite, search, filterRegion}: any){     
+type MapProps = 
+{
+    countries?: string,
+    limite?: number,
+    search?: any,
+    filterRegion?: string
+};
+
+export function MapCountries(props: MapProps){     
     var navigate = useNavigate(); 
     return(
         <Fragment>
             {
             //fixed error countries is not a function
-            Array.isArray(countries) ?
-            countries.filter((item: any) => 
+            Array.isArray(props.countries) ?
+            props.countries.filter((item: any) => 
                 item?.name.common
                     .replace(/'/g, '')
                     .toLowerCase()
-                    .includes(search
+                    .includes(props.search
                             .toLowerCase()
                             .trim())                   
             )
             .filter((item: any) => {
-                if(filterRegion == ""){
+                if(props.filterRegion == ""){
                     return item;
                 }
 
-                else if(item?.region == filterRegion){
+                else if(item?.region == props.filterRegion){
                     return item;
                 }
             })
@@ -88,7 +96,7 @@ export function MapCountries({countries, limite, search, filterRegion}: any){
                 ) 
             }
             
-            ).slice(0, limite).sort()
+            ).slice(0, props.limite).sort()
             : null
         }           
         </Fragment>
