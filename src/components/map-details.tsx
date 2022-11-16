@@ -87,10 +87,3 @@ export function Mapdetails(props: detailsProps){
     )
      
 }
-//  return (                                                            
-//                                                             <>
-//                                                                 <button className="border-button" style={{}} onClick={() => navigate(`/details/${border}`)}>
-//                                                                     {border}
-//                                                                 </button>
-//                                                             </>                                         
-//                                                         )

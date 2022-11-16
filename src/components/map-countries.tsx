@@ -4,18 +4,28 @@ import '../styles/global.css';
 
 type MapProps = 
 {
-    countries?: string,
+    countries?: string | any,
     limite?: number,
     search?: any,
     filterRegion?: string,
     orderPopulation?: any
 };
 
-export function MapCountries(props: MapProps){     
+export function MapCountries(props: MapProps){ 
+    Array.isArray(props.countries) ?
+    props.countries.sort((a,b) => {
+        if(a.population > b.population){
+            return -1;
+        } else{
+            return true;
+        }
+    }) 
+    : null
     var navigate = useNavigate();
     return(
         <Fragment>
             {
+                
             //fixed error countries is not a function
             Array.isArray(props.countries) ?
             props.countries.filter((item: any) => 
@@ -23,8 +33,8 @@ export function MapCountries(props: MapProps){
                     .replace(/'/g, '')
                     .toLowerCase()
                     .includes(props.search
-                            .toLowerCase()
-                            .trim())                   
+                    .toLowerCase()
+                    .trim())                   
             )
             .filter((item: any) => {
                 if(props.filterRegion == ""){
@@ -35,6 +45,7 @@ export function MapCountries(props: MapProps){
                     return item;
                 }
             })
+            
             .map((item: any, index: any) => {                              
                 const navigateDetails = () => {
                     navigate(`/details/${item?.cca3}`);
@@ -85,11 +96,11 @@ export function MapCountries(props: MapProps){
                             </div>
                         </div>
                     </>
-                ) 
-            }
+                )            }
             
-            ).slice(0, props.limite).sort()
+            ).slice(0, props.limite)
             : null
+            
         }           
         </Fragment>
 
