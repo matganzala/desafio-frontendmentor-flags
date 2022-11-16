@@ -9,7 +9,8 @@ type CountriesProps =
     search?: string,
     countries?: any ,
     setCountries?: string | any,
-    limite?: number
+    limite?: number,
+    orderPopulation?: string | any
 };
 
 export function Countries(props: CountriesProps) {  
@@ -69,7 +70,7 @@ export function Countries(props: CountriesProps) {
                 countries={props.countries}
                 limite={props.limite}
                 filterRegion={props.filterRegion}
-                search={props.search}      
+                search={props.search}
             />
         </>
     )

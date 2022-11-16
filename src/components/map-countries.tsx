@@ -7,7 +7,8 @@ type MapProps =
     countries?: string,
     limite?: number,
     search?: any,
-    filterRegion?: string
+    filterRegion?: string,
+    orderPopulation?: any
 };
 
 export function MapCountries(props: MapProps){     

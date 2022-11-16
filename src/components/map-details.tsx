@@ -35,7 +35,7 @@ export function Mapdetails(props: detailsProps){
                                             <div className="row">
                                                 <div className="col">
                                                     <p className="mt-2 p-class"><strong>Native Name: </strong>{detail?.name.common}</p>
-                                                    <p className="mt-2 p-class"><strong>Population: </strong>{detail?.population}</p>
+                                                    <p className="mt-2 p-class"><strong>Population: </strong>{detail?.population.toLocaleString('pt-BR')}</p>
                                                     <p className="mt-2 p-class"><strong>Region: </strong>{detail?.region}</p>
                                                     <p className="mt-2 p-class"><strong>Sub Region: </strong>{detail?.subregion}</p>
                                                     <p className="mt-2 p-class"><strong>Capital: </strong>{detail?.capital === " " ? <p> No Capital</p> : detail?.capital}</p>
