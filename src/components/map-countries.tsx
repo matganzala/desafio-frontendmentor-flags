@@ -13,6 +13,7 @@ type MapProps =
 
 export function MapCountries(props: MapProps){ 
     Array.isArray(props.countries) ?
+    //Trocar para tipo number
     props.countries.sort((a,b) => {
         if(a.population > b.population){
             return -1;

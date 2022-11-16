@@ -53,7 +53,7 @@ export function Countries(props: CountriesProps) {
         };
         
         
-    }, [scroll, heigth]);                
+    }, [scroll, heigth]);    
     
 
     async function fetchCountries(){
