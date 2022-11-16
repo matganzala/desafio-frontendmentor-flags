@@ -15,21 +15,18 @@ export async function getCountries() {
     return retur;    
 };
 
-export async function getCountriescca3(codeParams: any) {
-    const API_URL: any = `https://restcountries.com/v3.1/alpha/${codeParams}`;
-    let retur = {};
-    var request: any = {
-        method: 'GET',
-        redirect: 'follow'
-      };
-     
-    await fetch(API_URL, request)
-      .then(response => response.json())
-      .then(data => {
-          retur = data;                
-          console.log(data);         
-        }
-      );
-
-    return retur;    
-};
+export async function getCCA3(cca3: any) {
+  const API_URL: any = `https://restcountries.com/v3.1/alpha/${cca3}`;
+  let retur = {};
+  var request: any = {
+      method: 'GET',  
+      redirect: 'follow'
+    };
+  await fetch(API_URL, request)
+    .then(response => response.json())
+    .then(data => {
+      retur = data;      
+    }
+  );    
+    return retur;   
+}

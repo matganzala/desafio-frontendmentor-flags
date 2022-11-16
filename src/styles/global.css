@@ -56,20 +56,11 @@
 }
 
 .flags{
-    max-width: 600px;
-    max-height: 300px;
-    object-fit: cover;
+    width: 100%;    
+    object-fit: cover;    
 }
 
 
-{/**@media screen and (prefers-color-scheme: dark){
-    .content-countries{
-        background-color: hsl(207, 26%, 17%);
-        font-family: 'Nunito Sans', sans-serif; 
-        min-height: 100vh;
-        overflow-y: hidden;
-    }
-} **/}
 
 @media screen and (prefers-color-scheme: light){
     .content-countries, #light{
@@ -95,7 +86,7 @@
 
 .border-button{
     border-radius: 5px;
-   text-align: center;
+    text-align: center;
     font-family: 'Nunito Sans', sans-serif; 
     border: 1px solid #fff!important;
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15)!important;

@@ -2,43 +2,42 @@ import React, { Fragment } from "react";
 import { Link, matchPath, useNavigate } from "react-router-dom";
 import '../styles/global.css';
 
-export function MapCountries({countries, limite, search, filterRegion}: any){     
-    var navigate = useNavigate(); 
+type MapProps = 
+{
+    countries?: string,
+    limite?: number,
+    search?: any,
+    filterRegion?: string
+};
+
+export function MapCountries(props: MapProps){     
+    var navigate = useNavigate();
     return(
         <Fragment>
             {
             //fixed error countries is not a function
-            Array.isArray(countries) ?
-            countries.filter((item: any) => 
+            Array.isArray(props.countries) ?
+            props.countries.filter((item: any) => 
                 item?.name.common
                     .replace(/'/g, '')
                     .toLowerCase()
-                    .includes(search
+                    .includes(props.search
                             .toLowerCase()
                             .trim())                   
             )
             .filter((item: any) => {
-                if(filterRegion == ""){
+                if(props.filterRegion == ""){
                     return item;
                 }
 
-                else if(item?.region == filterRegion){
+                else if(item?.region == props.filterRegion){
                     return item;
                 }
             })
-            .map((item: any, index: any) => {
-                var ObjectCountries = {
-                    flag: item?.flags.svg,
-                    name: item?.name.common,
-                    border: item?.borders
-                };
-                              
+            .map((item: any, index: any) => {                              
                 const navigateDetails = () => {
-                    //navigate(`/details/${item}`)
-                    navigate(`/details/${JSON.stringify(ObjectCountries)}`);
-                };
-               
-                //console.log(item)                                                       
+                    navigate(`/details/${item?.cca3}`);
+                };               
                 return(
                     <>  
                         <div
@@ -88,7 +87,7 @@ export function MapCountries({countries, limite, search, filterRegion}: any){
                 ) 
             }
             
-            ).slice(0, limite).sort()
+            ).slice(0, props.limite).sort()
             : null
         }           
         </Fragment>

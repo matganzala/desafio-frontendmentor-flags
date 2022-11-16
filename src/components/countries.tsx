@@ -3,7 +3,16 @@ import '../styles/global.css';
 import { getCountries } from "../API/apicountries";
 import { MapCountries } from "./map-countries";
 
-export function Countries({filterRegion, search, countries, setCountries}: any) {  
+type CountriesProps = 
+{
+    filterRegion?: string,
+    search?: string,
+    countries?: any ,
+    setCountries?: string | any,
+    limite?: number
+};
+
+export function Countries(props: CountriesProps) {  
     const [limite, setLimite] = useState(20);
     const [scroll, setScroll] = useState(0);
     const [heigth, setHeigth] = useState(0); 
@@ -16,14 +25,13 @@ export function Countries({filterRegion, search, countries, setCountries}: any) 
             setScroll(window.scrollY);
             setHeigth(heigthAuxiliar - window.innerHeight);
             var infinite = true;
-            if(limite == countries.length){
+            if(limite == props.countries.length){
                 infinite = false;
             }
             if(infinite){
                 if(scroll >= heigth * .80 && !wait){
                     var limiteAuxiliar: any = 20;
                     limiteAuxiliar = limiteAuxiliar + 20;
-                    //console.log(limiteAuxiliar);
                     setLimite(limite + 20);
                     console.log(true);
                     
@@ -48,7 +56,7 @@ export function Countries({filterRegion, search, countries, setCountries}: any) 
     
 
     async function fetchCountries(){
-        setCountries(await getCountries().then());
+        props.setCountries(await getCountries().then());
     }
 
     useEffect(() => {
@@ -58,10 +66,10 @@ export function Countries({filterRegion, search, countries, setCountries}: any) 
     return(
         <>  
             <MapCountries
-                countries={countries}
-                limite={limite}
-                filterRegion={filterRegion}
-                search={search}      
+                countries={props.countries}
+                limite={props.limite}
+                filterRegion={props.filterRegion}
+                search={props.search}      
             />
         </>
     )

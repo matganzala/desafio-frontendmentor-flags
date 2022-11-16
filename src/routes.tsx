@@ -9,12 +9,12 @@ export function AppRouter() {
             <Router>
                 <Routes>
                     <Route path="/">
-                        <Route path=":id" element={<Home />}/>
-                        <Route path="" element={<Home />}/>
+                        <Route path="" element={<Home/>}/>
+                        <Route path=":countries" element={<Home/>}/>
+                        <Route path="/details/:details" element={<Details/>}/>
                     </Route>
-                    <Route path="/details/:countries" element={<Details/>}/>
                 </Routes>
-            </Router>
+            </Router>            
         </>
     )
-};
+}
