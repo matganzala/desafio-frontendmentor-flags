@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import FadeIn from "react-fade-in";
 import { Params, useNavigate, useParams } from "react-router-dom";
 import { getName } from "../API/apicountries";
-import { MapDetails } from "../components/map-details";
+import { Mapdetails } from "../components/map-details";
 import { Navbar } from "../components/navbar";
 
 export function Details() {
@@ -23,18 +23,13 @@ export function Details() {
 
     useEffect(() => {
         awaitGetCountriesName();
-    }, [])
-    // async function awaitBordersApi(){
-    //     getCountriescca3(borders);
-    // };
-
-   
+    }, []);
 
     return( 
         <>
             <div className="content-countries">
                 <Navbar/>
-                <MapDetails details={details}/>          
+                <Mapdetails details={details}/>          
             </div>
         </> 
     )

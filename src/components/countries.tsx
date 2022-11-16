@@ -32,7 +32,6 @@ export function Countries(props: CountriesProps) {
                 if(scroll >= heigth * .80 && !wait){
                     var limiteAuxiliar: any = 20;
                     limiteAuxiliar = limiteAuxiliar + 20;
-                    //console.log(limiteAuxiliar);
                     setLimite(limite + 20);
                     console.log(true);
                     
