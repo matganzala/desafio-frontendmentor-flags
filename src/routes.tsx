@@ -6,14 +6,15 @@ import { Home } from "./pages/home";
 export function AppRouter() { 
     return(
         <>
+            <Router>
                 <Routes>
                     <Route path="/">
-                        <Route path="" element={<Home/>}>
-                        <Route path=":countries" element={<Home/>}>
+                        <Route path=":id" element={<Home />}/>
+                        <Route path="" element={<Home />}/>
                     </Route>
                     <Route path="/details/:countries" element={<Details/>}/>
                 </Routes>
-            
+            </Router>
         </>
     )
-{"}"};
+};

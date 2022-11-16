@@ -7,8 +7,8 @@ import { Navbar } from "../components/navbar";
 
 export function Details() {
     const [borders, setBorders] = useState(''); 
-    const params = useParams();
-    console.log(params);
+    const { ObjectCountries } = useParams();
+    console.log(ObjectCountries);
 
 
     // async function awaitBordersApi(){
