@@ -34,19 +34,10 @@ export function MapCountries(props: MapProps){
                     return item;
                 }
             })
-            .map((item: any, index: any) => {          
-                              
+            .map((item: any, index: any) => {                              
                 const navigateDetails = () => {
-                    navigate(`/details/
-                        name:${item?.name.common}
-                        capital:${item?.capital}
-                        population:${item?.population}
-                        `
-                        );
-                    //navigate(`/details/${JSON.stringify(ObjectCountries)}`);
-                };
-               
-                //console.log(item)                                                       
+                    navigate(`/details/${item?.name.common}`);
+                };               
                 return(
                     <>  
                         <div

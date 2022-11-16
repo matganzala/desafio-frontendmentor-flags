@@ -15,8 +15,8 @@ export async function getCountries() {
     return retur;    
 };
 
-export async function getCountriescca3(codeParams: any) {
-    const API_URL: any = `https://restcountries.com/v3.1/alpha/${codeParams}`;
+export async function getCca3(cca3: any) {
+    const API_URL: any = `https://restcountries.com/v3.1/alpha/${cca3}`;
     let retur = {};
     var request: any = {
         method: 'GET',
@@ -33,3 +33,19 @@ export async function getCountriescca3(codeParams: any) {
 
     return retur;    
 };
+
+export async function getName(name: string){
+  const API_URL: any = `https://restcountries.com/v3.1/name/${name}`
+  let retur = {};
+  var request: any = {
+      method: 'GET',  
+      redirect: 'follow'
+    };
+  await fetch(API_URL, request)
+    .then(response => response.json())
+    .then(data => {
+      retur = data;      
+    }
+  );    
+    return retur;   
+}
