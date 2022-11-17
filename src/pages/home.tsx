@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import '../styles/global.css';
 import FadeIn from 'react-fade-in';
 import { Countries } from "../components/countries";
 import { Navbar } from "../components/navbar";
 import { InputFilter, SelectFilter } from "./util";
-import { Link, useNavigate } from "react-router-dom";
 
 export function Home() { 
     const [search, setSearch] = useState('');
     const [filterRegion, setFilterRegion] = useState('');
     const [countries, setCountries] = useState('');
-    const [themeSwitch, setThemeSwitch] = useState(true);
 
     return(
         <>
-            <div className="content-countries" id={!themeSwitch ? '#light' : '#dark'}>
+            <div className="content-countries">
                 <Navbar/>
                 <FadeIn>
                     <div className="container">
