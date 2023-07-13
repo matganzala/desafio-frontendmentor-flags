@@ -8,12 +8,12 @@ import { Navbar } from "../components/navbar";
 
 export function Details() {
     const [details, setDetails] = useState('');
-    const params = useParams<Params>();
+    const params: any = useParams<Params>();
     var navigate = useNavigate();
     
     async function awaitGetCountries(){
         setDetails(await 
-            getCCA3(params.details
+            getCCA3(params?.details
                     .toLowerCase()
                     .replace(/'/g, '')
                     .toString())

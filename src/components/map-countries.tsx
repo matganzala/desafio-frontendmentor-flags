@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { Fragment } from "react";
 import { Link, matchPath, useNavigate } from "react-router-dom";
 import '../styles/global.css';
@@ -14,7 +15,7 @@ type MapProps =
 export function MapCountries(props: MapProps){ 
     Array.isArray(props.countries) ?
     //Trocar para tipo number
-    props.countries.sort((a,b) => {
+    props.countries.sort((a: any, b: any) => {
         if(a.population > b.population){
             return -1;
         } else{
