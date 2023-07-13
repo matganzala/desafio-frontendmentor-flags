@@ -25,7 +25,14 @@
     border: 1px solid #fff;
     -webkit-box-shadow: 4px 8px 20px 1px hsl(0, 0%, 95%); 
     box-shadow: 4px 8px 20px 1px hsl(0, 0%, 95%);    
+    cursor: pointer;
+    transition: 0.4s;
     /* //width: 400px */
+}
+.card:hover{
+    transition: 0.4s;
+    background-color: #f8f8ff;
+    border: 1px solid #f8f8ff;
 }
 
 .card-item{
@@ -34,14 +41,15 @@
     max-height: 180px;
     border-radius: 5px; 
     padding: 20px 15px 15px 15px ;   
+    cursor: pointer;
 }
 
 .card-item:hover, .card:hover {
-    background-color: #d9d9d9;
+    background-color: #f8f8ff;
 }
 
 .card-item:active, .card:active {
-  background-color: #d9d9d9;
+  background-color: #f8f8ff;
   transform: translateY(2px);
 }
 

@@ -24,7 +24,7 @@ export function Home() {
                                 <SelectFilter setFilterRegion={setFilterRegion} />                                          
                             </div>
                         </div>
-                        <div className="row d-flex justify-content-center mt-5 mb-5">
+                        <div className="row d-flex justify-content-center mt-5 mb-5 pe-auto">
                             <div className="col d-flex flex-wrap justify-content-center">
                                 <Countries 
                                     countries={countries}
